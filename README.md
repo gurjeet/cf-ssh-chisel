@@ -46,13 +46,14 @@
 	Use the URL/route assigned to the app in step 4 above.
 
 	```
-	chisel client --keepalive 10s https://your-cf-apps-url 5022::2022
+	cf curl /v2/apps/$(cf app --guid cf-ssh-chisel)/stats |jq -r -f local_tunnel.jq
 	```
 
-	You now have a TCP tunnel configured from localhost (port 5022) to the SSH
-	daemon (port 2022) running in Cloud Foundry container. The remote port
-	(2022 in this case) is fixed. You can run multiple chisel clients simultaneously
-	by choosing a different local port (5022 in this case).
+    This produces a command line which, when run, gives you a TCP tunnel
+    configured from localhost (port 5022) to the SSH daemon (port 2022) running
+    in Cloud Foundry container. The remote port (2022 in this case) is fixed.
+    You can run multiple chisel clients simultaneously by choosing a different
+    local port (5022 in this case).
 
 7. Use SSH to login in the container
 
