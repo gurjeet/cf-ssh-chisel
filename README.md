@@ -77,7 +77,7 @@
 	that is only accessible from Cloud Foundry applications.
 
 	```
-	ssh -L 6632:myapp-db.example.com:5432 vcap@localhost -p 5022
+	ssh -fNL 6632:myapp-db.example.com:5432 vcap@localhost -p 5022
 	```
 
 	You can now connect Postgres utilities to localhost:6632 to connect to and
